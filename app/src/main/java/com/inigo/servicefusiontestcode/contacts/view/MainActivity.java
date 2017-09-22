@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
     public static final String CONTACT_CREATED = "contactCreated";
     public static final String CREATED = "Contact Created.";
+    public static final String CONTACT_ID = "contactId";
 
     private MainPresenter mainPresenter;
     private RecyclerView contacstRecycler;

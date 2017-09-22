@@ -12,6 +12,7 @@ import com.inigo.servicefusiontestcode.R;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
 import com.inigo.servicefusiontestcode.contact.view.ContactActivity;
 import com.inigo.servicefusiontestcode.contacts.model.Contacts;
+import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -51,7 +52,7 @@ public class ContactsAdapterRecyclerView extends RecyclerView.Adapter<ContactsAd
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, ContactActivity.class);
-                //intent.putExtra("Key", item);
+                intent.putExtra(MainActivity.CONTACT_ID, contact.getId().toString());
                 activity.startActivity(intent);
             }
         });
