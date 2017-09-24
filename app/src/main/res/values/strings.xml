@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">servicefusiontestcode</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_edit_contact">Edit</string>
+    <string name="action_delete_contact">Delete</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_card">Name</string>
     <string name="last_name_card">Last Name</string>

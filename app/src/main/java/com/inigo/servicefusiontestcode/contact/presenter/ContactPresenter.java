@@ -3,13 +3,14 @@ package com.inigo.servicefusiontestcode.contact.presenter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.inigo.servicefusiontestcode.contact.interactor.DeleteContactInteractor;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
 import com.inigo.servicefusiontestcode.contact.view.ContactActivity;
 import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
 import com.inigo.servicefusiontestcode.contacts.interactor.ObtainContactInteractor;
-import com.inigo.servicefusiontestcode.contacts.model.Contacts;
 import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
 
+import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -23,7 +24,6 @@ public class ContactPresenter {
     private SQLiteDatabase db;
     private ContactSQLiteHelper contactHelper;
 
-    private Contacts dataBaseContacts;
     private ObtainContactInteractor obtainContactInteractor;
 
     private Contact contact;
@@ -53,6 +53,17 @@ public class ContactPresenter {
                 e.printStackTrace();
             }
         }
+    }
+
+    public Boolean deleteContact(){
+        try {
+            return new DeleteContactInteractor(db).execute(contact).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public interface View{
