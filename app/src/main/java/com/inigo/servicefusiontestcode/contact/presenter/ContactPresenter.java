@@ -4,13 +4,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.inigo.servicefusiontestcode.contact.interactor.DeleteContactInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.ObtainPhonesInteractor;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
+import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.view.ContactActivity;
 import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
-import com.inigo.servicefusiontestcode.contacts.interactor.ObtainContactInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.ObtainContactInteractor;
 import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
 
-import java.util.Set;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -25,6 +26,7 @@ public class ContactPresenter {
     private ContactSQLiteHelper contactHelper;
 
     private ObtainContactInteractor obtainContactInteractor;
+    private ObtainPhonesInteractor obtainPhonesInteractor;
 
     private Contact contact;
 
@@ -55,6 +57,17 @@ public class ContactPresenter {
         }
     }
 
+    public void obtainPhones(String id){
+        obtainPhonesInteractor = new ObtainPhonesInteractor(db);
+        try {
+            contactActivity.bindPhones(obtainPhonesInteractor.execute(id).get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Boolean deleteContact(){
         try {
             return new DeleteContactInteractor(db).execute(contact).get();
@@ -67,6 +80,8 @@ public class ContactPresenter {
     }
 
     public interface View{
-        public void bindData(Contact contact);
+        void bindData(Contact contact);
+
+        void bindPhones(Phones phones);
     }
 }

@@ -6,6 +6,7 @@
     <dimen name="text_cardview_margin">16dp</dimen>
     <dimen name="cornerradius_cardview">4dp</dimen>
     <dimen name="height_cardview">80dp</dimen>
+    <dimen name="height_phone_cardview">70dp</dimen>
     <dimen name="dimen_circleimageprofile">50dp</dimen>
     <dimen name="elevation_circleimageprofile">10dp</dimen>
     <dimen name="margintop_circleimageprofile">12dp</dimen>
@@ -17,4 +18,12 @@
     <dimen name="iconfile_size">30dp</dimen>
     <dimen name="margintop_file">15dp</dimen>
     <dimen name="progressbar_dimen">50dp</dimen>
+    <dimen name="marginleft_edittextcontact">10dp</dimen>
+    <dimen name="addbutton_phonecontact">20dp</dimen>
+    <dimen name="callbutton_phonecontact">28dp</dimen>
+    <dimen name="margintop_phonesedit">10dp</dimen>
+    <dimen name="margintop_contactitem">10dp</dimen>
+    <dimen name="marginleft_contactitem">15dp</dimen>
+    <dimen name="phoneitemview_height">45dp</dimen>
+    <dimen name="buttoncall_maringright">50dp</dimen>
 </resources>

@@ -5,13 +5,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.inigo.servicefusiontestcode.R;
+import com.inigo.servicefusiontestcode.contact.adapter.PhoneAdapterRecyclerView;
+import com.inigo.servicefusiontestcode.contact.adapter.PhoneViewAdapterRecyclerView;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
+import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.presenter.ContactPresenter;
 import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
 
@@ -27,6 +32,9 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
 
     private ContactPresenter contactPresenter;
     private String contantId;
+
+    private RecyclerView phonesRecycler;
+    private PhoneViewAdapterRecyclerView phoneViewAdapterRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,14 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
             bundle.putString(MainActivity.CONTACT_ID, (getIntent().getStringExtra(MainActivity.CONTACT_ID)));
             contactPresenter = new ContactPresenter(this);
             contactPresenter.obtainContact(bundle);
+
+            phonesRecycler = (RecyclerView)findViewById(R.id.viewPhonesRecycler);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+            phonesRecycler.setLayoutManager(linearLayoutManager);
+            contactPresenter.obtainPhones(getIntent().getStringExtra(MainActivity.CONTACT_ID));
         }
     }
 
@@ -54,6 +70,16 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
             name.setText(contact.getName());
             lastname.setText(contact.getLastName());
         }
+    }
+
+    @Override
+    public void bindPhones(Phones phones) {
+        phoneViewAdapterRecyclerView
+                = new PhoneViewAdapterRecyclerView(phones,
+                R.layout.phone_item_view, this);
+
+        phonesRecycler.setAdapter(phoneViewAdapterRecyclerView);
+        phonesRecycler.invalidate();
     }
 
     @Override

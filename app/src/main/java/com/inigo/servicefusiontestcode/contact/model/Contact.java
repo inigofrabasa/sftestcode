@@ -13,7 +13,7 @@ public class Contact {
     private String lastName;
     private String dateOfBirth;
     private List<String> adresses;
-    private List<String> phones;
+    private Phones phones;
     private List<String> emails;
 
     public Integer getId() {
@@ -65,11 +65,11 @@ public class Contact {
         this.adresses = adresses;
     }
 
-    public List<String> getPhones() {
+    public Phones getPhones() {
         return phones;
     }
 
-    public void setPhones(List<String> phones) {
+    public void setPhones(Phones phones) {
         this.phones = phones;
     }
 

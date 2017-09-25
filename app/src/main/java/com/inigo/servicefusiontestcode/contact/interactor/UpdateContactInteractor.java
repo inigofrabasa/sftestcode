@@ -10,7 +10,7 @@ import com.inigo.servicefusiontestcode.contact.model.Contact;
  * Created by Inigo on 23/09/17.
  */
 
-public class UpdateContactInteractor extends AsyncTask<Contact, Void, Boolean> {
+public class UpdateContactInteractor extends AsyncTask<Contact, Void, Integer> {
     private SQLiteDatabase db;
 
     public UpdateContactInteractor(SQLiteDatabase db) {
@@ -18,21 +18,19 @@ public class UpdateContactInteractor extends AsyncTask<Contact, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(Contact... contact) {
+    protected Integer doInBackground(Contact... contact) {
         if(contact != null && db != null){
             ContentValues updateContact = new ContentValues();
 
             updateContact.put("name",contact[0].getName().toString());
             updateContact.put("lastname",contact[0].getLastName().toString());
-
             db.update("Contact",updateContact,"id="+contact[0].getId(),null);
-
-            return true;
-        } else return false;
+            return contact[0].getId();
+        } else return -1;
     }
 
     @Override
-    protected void onPostExecute(Boolean aBoolean) {
-        super.onPostExecute(aBoolean);
+    protected void onPostExecute(Integer result) {
+        super.onPostExecute(result);
     }
 }

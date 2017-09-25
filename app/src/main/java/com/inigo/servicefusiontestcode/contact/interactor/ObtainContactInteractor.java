@@ -1,4 +1,4 @@
-package com.inigo.servicefusiontestcode.contacts.interactor;
+package com.inigo.servicefusiontestcode.contact.interactor;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;

@@ -3,12 +3,17 @@ package com.inigo.servicefusiontestcode.contact.presenter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.inigo.servicefusiontestcode.contact.adapter.PhoneAdapterRecyclerView;
 import com.inigo.servicefusiontestcode.contact.interactor.CreateContactInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.CreatePhonesInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.ObtainPhonesInteractor;
 import com.inigo.servicefusiontestcode.contact.interactor.UpdateContactInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.UpdatePhonesInteractor;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
+import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.view.CreateUpdateContactActivity;
 import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
-import com.inigo.servicefusiontestcode.contacts.interactor.ObtainContactInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.ObtainContactInteractor;
 
 import java.util.concurrent.ExecutionException;
 
@@ -16,13 +21,14 @@ import java.util.concurrent.ExecutionException;
  * Created by Inigo on 22/09/17.
  */
 
-public class CreateUpdateContactPresenter {
+public class CreateUpdateContactPresenter implements PhoneAdapterRecyclerView.OnPhonesDataChange{
 
     private CreateUpdateContactActivity createUpdateContactActivity;
 
     public CreateUpdateContactPresenter(CreateUpdateContactActivity createUpdateContactActivity){
         this.createUpdateContactActivity = createUpdateContactActivity;
         initDB();
+        phones = new Phones();
     }
 
     private SQLiteDatabase db;
@@ -30,6 +36,11 @@ public class CreateUpdateContactPresenter {
 
     private CreateContactInteractor createContactInteractor;
     private UpdateContactInteractor updateContactInteractor;
+    private CreatePhonesInteractor createPhonesInteractor;
+    private UpdatePhonesInteractor updatePhonesInteractor;
+
+    private Contact contact;
+    private Phones phones;
 
     public Boolean tryCreateContact(Bundle bundle){
 
@@ -41,13 +52,20 @@ public class CreateUpdateContactPresenter {
             return false;
         }
 
+        if(phones.getPhones().size() == 0)
+            return false;
+
+        if(phones.getPhones().size() == 1)
+            if(phones.getPhone(0).equals(""))
+                return false;
+
         initDB();
 
-        createContact(
-                new Contact(
+        contact = new Contact(
                 bundle.getString(CreateUpdateContactActivity.CONTACT_NAME),
-                bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME)));
-
+                bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME));
+        contact.setPhones(phones);
+        createContact(contact);
         return true;
     }
 
@@ -61,14 +79,21 @@ public class CreateUpdateContactPresenter {
             return false;
         }
 
+        if(phones.getPhones().size() == 0)
+            return false;
+
+        if(phones.getPhones().size() == 1)
+            if(phones.getPhone(0).equals(""))
+                return false;
+
         initDB();
 
-        Contact contact = new Contact(
+        contact = new Contact(
                 bundle.getString(CreateUpdateContactActivity.CONTACT_NAME),
                 bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME));
         contact.setId(Integer.parseInt(bundle.getString(CreateUpdateContactActivity.CONTACT_ID)));
+        contact.setPhones(phones);
         updateContact(contact);
-
         return true;
     }
 
@@ -82,7 +107,11 @@ public class CreateUpdateContactPresenter {
         if (inContact != null) {
             try {
                 createContactInteractor = new CreateContactInteractor(db);
-                Boolean result = createContactInteractor.execute(inContact).get();
+                Integer result = createContactInteractor.execute(inContact).get();
+                if(result != -1){
+                    createPhonesInteractor = new CreatePhonesInteractor(db,result);
+                    createPhonesInteractor.execute(phones).get();
+                }
             } catch (ExecutionException e) {
             } catch (InterruptedException f) {}
         }
@@ -92,7 +121,11 @@ public class CreateUpdateContactPresenter {
         if (inContact != null) {
             try {
                 updateContactInteractor = new UpdateContactInteractor(db);
-                Boolean result = updateContactInteractor.execute(inContact).get();
+                Integer result = updateContactInteractor.execute(inContact).get();
+                if(result != -1){
+                    updatePhonesInteractor = new UpdatePhonesInteractor(db,result);
+                    updatePhonesInteractor.execute(phones).get();
+                }
             } catch (ExecutionException e) {
             } catch (InterruptedException f) {}
         }
@@ -100,7 +133,12 @@ public class CreateUpdateContactPresenter {
 
     public void obtainContact(String id){
         try {
-            createUpdateContactActivity.bindData((new ObtainContactInteractor(db)).execute(id).get());
+            contact = (new ObtainContactInteractor(db)).execute(id).get();
+            createUpdateContactActivity.bindData(contact);
+            phones = (new ObtainPhonesInteractor(db)).execute(id).get();
+            contact.setPhones(phones);
+            createUpdateContactActivity.bindPhones(phones);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -108,7 +146,19 @@ public class CreateUpdateContactPresenter {
         }
     }
 
+    public void initPhone(){
+        phones.add("");
+        createUpdateContactActivity.bindPhones(phones);
+    }
+
+    @Override
+    public void phonesDataChange(Phones phones) {
+        createUpdateContactActivity.bindPhones(phones);
+    }
+
     public interface View {
         void bindData(Contact contact);
+
+        void bindPhones(Phones phones);
     }
 }

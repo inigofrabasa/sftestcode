@@ -13,11 +13,11 @@ public class ContactSQLiteHelper extends SQLiteOpenHelper {
     private final String CREATE_TABLE_CONTACT
             = "CREATE TABLE Contact (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, lastname TEXT, datebirth TEXT)";
     private final String CREATE_TABLE_ADDRESSES
-            = "CREATE TABLE Addresses (id INTEGER PRIMARY KEY, address TEXT)";
+            = "CREATE TABLE Addresses (id INTEGER PRIMARY KEY AUTOINCREMENT, id_contact INTEGER, address TEXT)";
     private final String CREATE_TABLE_PHONES
-            = "CREATE TABLE Phones (id INTEGER PRIMARY KEY, phone TEXT)";
+            = "CREATE TABLE Phones (id INTEGER PRIMARY KEY AUTOINCREMENT, id_contact INTEGER, phone TEXT)";
     private final String CREATE_TABLE_EMAILS
-            = "CREATE TABLE Emails (id INTEGER PRIMARY KEY, email TEXT)";
+            = "CREATE TABLE Emails (id INTEGER PRIMARY KEY AUTOINCREMENT, id_contact INTEGER, email TEXT)";
 
     public ContactSQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

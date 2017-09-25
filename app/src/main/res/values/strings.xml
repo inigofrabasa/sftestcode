@@ -4,6 +4,7 @@
     <string name="action_delete_contact">Delete</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_card">Name</string>
+    <string name="phone_card">Phone:</string>
     <string name="last_name_card">Last Name</string>
     <string name="timecard_card">no date</string>
     <string name="numbercomments_card">0</string>
@@ -14,4 +15,8 @@
     <string name="filename_maxlines">1</string>
     <string name="toolbar_title_mainactivity"> Gists</string>
     <string name="toolbar_title_filevieweractivity"> Gist File</string>
+    <string name="nametitle_editcontact">Name:</string>
+    <string name="lastnametitle_editcontact">Last Name:</string>
+    <string name="phones_editcontact">Phones:</string>
+    <string name="phonehint_editcontact">phone...</string>
 </resources>

@@ -19,6 +19,7 @@
 
         <EditText
             android:id="@+id/et_searchContact"
+            style="@style/AppFontStyle"
             android:hint="Search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -29,7 +30,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="right|center_vertical"
-            android:background="@mipmap/ic_clear"
+            android:background="@drawable/icn_clear"
             android:layout_marginBottom="5dp"
             style="@style/clearButton"
             />
@@ -39,6 +40,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contactsRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
