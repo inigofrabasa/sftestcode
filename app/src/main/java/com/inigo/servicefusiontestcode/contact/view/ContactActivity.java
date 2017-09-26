@@ -21,7 +21,7 @@ import com.inigo.servicefusiontestcode.contact.model.Contact;
 import com.inigo.servicefusiontestcode.contact.model.Emails;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.presenter.ContactPresenter;
-import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
+import com.inigo.servicefusiontestcode.contactslist.view.MainActivity;
 
 public class ContactActivity extends AppCompatActivity implements ContactPresenter.View{
 

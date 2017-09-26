@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Contacts App</string>
+    <string name="app_name">CodeTest InigoFlores</string>
     <string name="action_edit_contact">Edit</string>
     <string name="action_delete_contact">Delete</string>
     <string name="name_card">Name</string>
@@ -16,4 +16,6 @@
     <string name="addresshint_editcontact">address...</string>
     <string name="emailhint_editcontact">email...</string>
     <string name="search_hint">Search</string>
+    <string name="text_header_contact">A</string>
+    <string name="noContactsList">No Contacts</string>
 </resources>

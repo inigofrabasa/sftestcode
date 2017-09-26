@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
 import com.inigo.servicefusiontestcode.contact.model.Contact;
-import com.inigo.servicefusiontestcode.contacts.model.Contacts;
 
 /**
  * Created by Inigo on 22/09/17.

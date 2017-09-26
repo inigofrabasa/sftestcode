@@ -1,4 +1,4 @@
-package com.inigo.servicefusiontestcode.contacts.adapter;
+package com.inigo.servicefusiontestcode.contactslist.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,8 +11,11 @@ import android.widget.TextView;
 import com.inigo.servicefusiontestcode.R;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
 import com.inigo.servicefusiontestcode.contact.view.ContactActivity;
-import com.inigo.servicefusiontestcode.contacts.model.Contacts;
-import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
+import com.inigo.servicefusiontestcode.contactslist.model.Contacts;
+import com.inigo.servicefusiontestcode.contactslist.view.MainActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -24,6 +27,7 @@ public class ContactsAdapterRecyclerView extends RecyclerView.Adapter<ContactsAd
     private static Contacts contacts;
     private int resource;
     private Activity activity;
+    private List<Character> letters;
 
     public static Contacts getContacts() {
         return contacts;
@@ -33,6 +37,8 @@ public class ContactsAdapterRecyclerView extends RecyclerView.Adapter<ContactsAd
         this.contacts = contacts;
         this.resource = resource;
         this.activity = activity;
+
+        letters = new ArrayList<>();
     }
 
     @Override
@@ -47,6 +53,22 @@ public class ContactsAdapterRecyclerView extends RecyclerView.Adapter<ContactsAd
 
         holder.contactName.setText(contact.getName().toString());
         holder.contactLastName.setText(contact.getLastName().toString());
+
+        if(letters.size() == 0){
+            letters.add(contact.getName().charAt(0));
+            holder.header.setVisibility(View.VISIBLE);
+            holder.headerText.setText(letters.get(0).toString().toUpperCase());
+        }
+        else{
+            if(!letters.get(letters.size() - 1).equals(contact.getName().charAt(0))){
+                letters.add(contact.getName().charAt(0));
+                holder.header.setVisibility(View.VISIBLE);
+                holder.headerText.setText(letters.get(letters.size() - 1).toString().toUpperCase());
+            }
+        }
+
+        holder.initialsContact.setText(Character.toString(contact.getName().charAt(0)) +
+                Character.toString(contact.getLastName().charAt(0)));
 
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +92,9 @@ public class ContactsAdapterRecyclerView extends RecyclerView.Adapter<ContactsAd
         private TextView contactLastName;
 
         private View container;
+        private View header;
+        private TextView headerText;
+        private TextView initialsContact;
 
         public ContactsViewHolder(View itemView) {
             super(itemView);
@@ -78,6 +103,9 @@ public class ContactsAdapterRecyclerView extends RecyclerView.Adapter<ContactsAd
             contactName           = (TextView)itemView.findViewById(R.id.contactNameCard);
             contactLastName       = (TextView)itemView.findViewById(R.id.contactLastNameCard);
             container             = itemView.findViewById(R.id.containerCard);
+            header                = itemView.findViewById(R.id.header_section);
+            headerText            = (TextView)itemView.findViewById(R.id.contactHeaderText);
+            initialsContact       = (TextView)itemView.findViewById(R.id.initialsContactCircle);
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.inigo.servicefusiontestcode.contacts.model;
+package com.inigo.servicefusiontestcode.contactslist.model;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
 import java.util.ArrayList;
 

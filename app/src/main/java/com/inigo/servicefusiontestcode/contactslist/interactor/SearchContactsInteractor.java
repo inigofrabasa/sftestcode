@@ -1,8 +1,8 @@
-package com.inigo.servicefusiontestcode.contacts.interactor;
+package com.inigo.servicefusiontestcode.contactslist.interactor;
 
 import android.os.AsyncTask;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
-import com.inigo.servicefusiontestcode.contacts.model.Contacts;
+import com.inigo.servicefusiontestcode.contactslist.model.Contacts;
 
 /**
  * Created by Inigo on 21/09/17.

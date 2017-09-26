@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".contacts.view.MainActivity"
+            android:name=".contactslist.view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -23,10 +23,10 @@
         </activity>
 
         <activity android:name=".contact.view.ContactActivity"
-            android:parentActivityName=".contacts.view.MainActivity">
+            android:parentActivityName=".contactslist.view.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".contacts.view.MainActivity" />
+                android:value=".contactslist.view.MainActivity" />
         </activity>
 
         <activity android:name=".contact.view.CreateUpdateContactActivity"

@@ -15,9 +15,9 @@ import com.inigo.servicefusiontestcode.contact.model.Contact;
 import com.inigo.servicefusiontestcode.contact.model.Emails;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.view.ContactActivity;
-import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
+import com.inigo.servicefusiontestcode.contactslist.database.ContactSQLiteHelper;
 import com.inigo.servicefusiontestcode.contact.interactor.ObtainContactInteractor;
-import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
+import com.inigo.servicefusiontestcode.contactslist.view.MainActivity;
 
 import java.util.concurrent.ExecutionException;
 

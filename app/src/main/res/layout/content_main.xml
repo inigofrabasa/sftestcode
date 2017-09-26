@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.inigo.servicefusiontestcode.contacts.view.MainActivity"
+    tools:context="com.inigo.servicefusiontestcode.contactslist.view.MainActivity"
     tools:showIn="@layout/activity_main"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -40,8 +40,19 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/contactsRecycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/noContactText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/AppFontStyle"
+        android:layout_marginLeft="@dimen/no_contacts_marginleft"
+        android:text="@string/noContactsList"
+        android:visibility="gone"
+    />
 
 </LinearLayout>

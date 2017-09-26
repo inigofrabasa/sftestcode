@@ -22,7 +22,7 @@ import com.inigo.servicefusiontestcode.contact.model.Contact;
 import com.inigo.servicefusiontestcode.contact.model.Emails;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.view.CreateUpdateContactActivity;
-import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
+import com.inigo.servicefusiontestcode.contactslist.database.ContactSQLiteHelper;
 import com.inigo.servicefusiontestcode.contact.interactor.ObtainContactInteractor;
 
 import java.util.concurrent.ExecutionException;

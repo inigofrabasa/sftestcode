@@ -1,13 +1,13 @@
-package com.inigo.servicefusiontestcode.contacts.presenter;
+package com.inigo.servicefusiontestcode.contactslist.presenter;
 
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.inigo.servicefusiontestcode.contacts.model.Contacts;
-import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
-import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
-import com.inigo.servicefusiontestcode.contacts.interactor.ObtainContactsInteractor;
-import com.inigo.servicefusiontestcode.contacts.interactor.SearchContactsInteractor;
+import com.inigo.servicefusiontestcode.contactslist.model.Contacts;
+import com.inigo.servicefusiontestcode.contactslist.view.MainActivity;
+import com.inigo.servicefusiontestcode.contactslist.database.ContactSQLiteHelper;
+import com.inigo.servicefusiontestcode.contactslist.interactor.ObtainContactsInteractor;
+import com.inigo.servicefusiontestcode.contactslist.interactor.SearchContactsInteractor;
 
 import java.util.concurrent.ExecutionException;
 

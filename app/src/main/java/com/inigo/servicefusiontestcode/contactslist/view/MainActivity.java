@@ -1,4 +1,4 @@
-package com.inigo.servicefusiontestcode.contacts.view;
+package com.inigo.servicefusiontestcode.contactslist.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,12 +13,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.inigo.servicefusiontestcode.R;
-import com.inigo.servicefusiontestcode.contacts.adapter.ContactsAdapterRecyclerView;
-import com.inigo.servicefusiontestcode.contacts.model.Contacts;
-import com.inigo.servicefusiontestcode.contacts.presenter.MainPresenter;
+import com.inigo.servicefusiontestcode.contactslist.adapter.ContactsAdapterRecyclerView;
+import com.inigo.servicefusiontestcode.contactslist.model.Contacts;
+import com.inigo.servicefusiontestcode.contactslist.presenter.MainPresenter;
 import com.inigo.servicefusiontestcode.contact.view.CreateUpdateContactActivity;
 
 public class MainActivity extends AppCompatActivity implements MainPresenter.View{
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
     private EditText editTextSearch;
     private Button clearSearch;
+    private TextView noContactsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         editTextSearch = (EditText) findViewById(R.id.et_searchContact);
         clearSearch = (Button) findViewById(R.id.bt_clearSearch);
+        noContactsText = (TextView) findViewById(R.id.noContactText);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getResources().getString(R.string.toolbar_title_mainactivity));
@@ -126,11 +129,19 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
     @Override
     public void bindData(Contacts inContacts){
-        contactsAdapterRecyclerView
-                = new ContactsAdapterRecyclerView(inContacts,
-                R.layout.contact_cardview, this);
+        if(inContacts.getContacts().size() > 0){
+            noContactsText.setVisibility(View.GONE);
+            contacstRecycler.setVisibility(View.VISIBLE);
+            contactsAdapterRecyclerView
+                    = new ContactsAdapterRecyclerView(inContacts,
+                    R.layout.contact_view, this);
+            contacstRecycler.setAdapter(contactsAdapterRecyclerView);
+            contacstRecycler.invalidate();
 
-        contacstRecycler.setAdapter(contactsAdapterRecyclerView);
-        contacstRecycler.invalidate();
+        }
+        else{
+            noContactsText.setVisibility(View.VISIBLE);
+            contacstRecycler.setVisibility(View.GONE);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.inigo.servicefusiontestcode.contacts.database;
+package com.inigo.servicefusiontestcode.contactslist.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
