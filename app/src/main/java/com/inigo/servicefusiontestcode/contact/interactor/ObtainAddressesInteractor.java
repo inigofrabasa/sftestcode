@@ -4,34 +4,35 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
+import com.inigo.servicefusiontestcode.contact.model.Addresses;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
 
 /**
- * Created by Inigo on 24/09/17.
+ * Created by Inigo on 25/09/17.
  */
 
-public class ObtainPhonesInteractor extends AsyncTask<String, Void, Phones> {
+public class ObtainAddressesInteractor  extends AsyncTask<String, Void, Addresses> {
 
     private SQLiteDatabase db;
 
-    public ObtainPhonesInteractor(SQLiteDatabase db) {
+    public ObtainAddressesInteractor(SQLiteDatabase db) {
         this.db = db;
     }
 
     @Override
-    protected Phones doInBackground(String... id ) {
+    protected Addresses doInBackground(String... id ) {
         if (db != null){
-            String contactsQuery ="select * from Phones where " + id[0] + " = id_contact" ;
+            String contactsQuery ="select * from Addresses where " + id[0] + " = id_contact" ;
             Cursor cursor = db.rawQuery(contactsQuery, null);
-            Phones phones = new Phones();
+            Addresses addresses = new Addresses();
 
             if (cursor.moveToFirst()){
                 while(cursor.isAfterLast() == false){
-                    phones.add(cursor.getString(cursor.getColumnIndex("phone")));
+                    addresses.add(cursor.getString(cursor.getColumnIndex("address")));
                     cursor.moveToNext();
                 }
             }
-            return phones;
+            return addresses;
         }
         return null;
     }

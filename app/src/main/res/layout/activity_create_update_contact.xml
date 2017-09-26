@@ -8,9 +8,24 @@
     android:orientation="vertical"
     tools:context="com.inigo.servicefusiontestcode.contact.view.CreateUpdateContactActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -121,6 +136,98 @@
 
             </android.support.v7.widget.RecyclerView>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_phonesedit"
+                >
+
+                <TextView
+                    android:id="@+id/tv_addressesTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/addresses_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    >
+
+                    <Button
+                        android:id="@+id/addAddress"
+                        android:layout_width="@dimen/addbutton_addresscontact"
+                        android:layout_height="@dimen/addbutton_addresscontact"
+                        android:background="@drawable/icn_add"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/editAddressesRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_phonesedit"
+                >
+
+                <TextView
+                    android:id="@+id/tv_emailsTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/emails_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    >
+
+                    <Button
+                        android:id="@+id/addEmail"
+                        android:layout_width="@dimen/addbutton_emailcontact"
+                        android:layout_height="@dimen/addbutton_emailcontact"
+                        android:background="@drawable/icn_add"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/editEmailsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="beforeDescendants"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
             <Button
                 android:id="@+id/bt_saveContact"
                 android:layout_width="wrap_content"
@@ -131,5 +238,4 @@
 
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

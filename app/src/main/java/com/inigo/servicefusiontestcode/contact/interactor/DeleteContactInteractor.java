@@ -10,7 +10,7 @@ import com.inigo.servicefusiontestcode.contact.model.Contact;
  * Created by Inigo on 23/09/17.
  */
 
-public class DeleteContactInteractor extends AsyncTask<Contact, Void, Boolean> {
+public class DeleteContactInteractor extends AsyncTask<Contact, Void, Integer> {
     private SQLiteDatabase db;
 
     public DeleteContactInteractor(SQLiteDatabase db) {
@@ -18,15 +18,15 @@ public class DeleteContactInteractor extends AsyncTask<Contact, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(Contact... contact) {
+    protected Integer doInBackground(Contact... contact) {
         if(contact != null && db != null){
             db.delete("Contact","id="+contact[0].getId(),null);
-            return true;
-        } else return false;
+            return contact[0].getId();
+        } else return -1;
     }
 
     @Override
-    protected void onPostExecute(Boolean aBoolean) {
-        super.onPostExecute(aBoolean);
+    protected void onPostExecute(Integer result) {
+        super.onPostExecute(result);
     }
 }

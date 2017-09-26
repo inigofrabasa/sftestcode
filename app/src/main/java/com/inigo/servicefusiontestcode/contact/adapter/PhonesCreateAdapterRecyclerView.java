@@ -19,7 +19,8 @@ import com.inigo.servicefusiontestcode.contact.presenter.CreateUpdateContactPres
  * Created by Inigo on 24/09/17.
  */
 
-public class PhoneAdapterRecyclerView extends RecyclerView.Adapter<PhoneAdapterRecyclerView.PhoneViewHolder>{
+public class PhonesCreateAdapterRecyclerView
+        extends RecyclerView.Adapter<PhonesCreateAdapterRecyclerView.PhoneCreateViewHolder>{
 
     private Phones phones;
     private int resource;
@@ -27,7 +28,7 @@ public class PhoneAdapterRecyclerView extends RecyclerView.Adapter<PhoneAdapterR
 
     private CreateUpdateContactPresenter createUpdateContactPresenter;
 
-    public PhoneAdapterRecyclerView(Phones phones, int resource, Activity activity) {
+    public PhonesCreateAdapterRecyclerView(Phones phones, int resource, Activity activity) {
         this.phones = phones;
         this.resource = resource;
         this.activity = activity;
@@ -38,13 +39,13 @@ public class PhoneAdapterRecyclerView extends RecyclerView.Adapter<PhoneAdapterR
     }
 
     @Override
-    public PhoneViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PhoneCreateViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(resource, parent, false);
-        return new PhoneAdapterRecyclerView.PhoneViewHolder(view);
+        return new PhoneCreateViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final PhoneViewHolder holder, final int position) {
+    public void onBindViewHolder(final PhoneCreateViewHolder holder, final int position) {
 
         holder.phoneNumber.setText(phones.getPhone(position));
         holder.phoneNumber.addTextChangedListener(new TextWatcher() {
@@ -81,13 +82,13 @@ public class PhoneAdapterRecyclerView extends RecyclerView.Adapter<PhoneAdapterR
         void phonesDataChange(Phones phones);
     }
 
-    public class PhoneViewHolder extends RecyclerView.ViewHolder{
+    public class PhoneCreateViewHolder extends RecyclerView.ViewHolder{
 
         private TextView phoneText;
         private EditText phoneNumber;
         private Button deletePhone;
 
-        public PhoneViewHolder(View itemView) {
+        public PhoneCreateViewHolder(View itemView) {
             super(itemView);
 
             phoneText   = (TextView)itemView.findViewById(R.id.contactNameCard);

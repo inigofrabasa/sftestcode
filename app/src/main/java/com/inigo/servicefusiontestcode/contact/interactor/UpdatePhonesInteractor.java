@@ -23,7 +23,6 @@ public class UpdatePhonesInteractor extends AsyncTask<Phones, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Phones... phones) {
         if(phones != null && db != null){
-            ContentValues updatePhones = new ContentValues();
             db.delete("Phones", "id_contact = " + contactId, null);
 
             for(String phone : phones[0].getPhones()){

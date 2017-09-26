@@ -10,21 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:id="@+id/tv_viewPhone"
+            android:id="@+id/tv_viewAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/AppFontStyle"
-            android:layout_toLeftOf="@+id/bt_callPhone"
-            />
-
-        <Button
-            android:id="@+id/bt_callPhone"
-            android:layout_width="@dimen/callbutton_phonecontact"
-            android:layout_height="@dimen/callbutton_phonecontact"
-            android:background="@drawable/icn_call"
-            style="@style/clearButton"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/buttoncall_maringright"
             />
     </RelativeLayout>
 </LinearLayout>

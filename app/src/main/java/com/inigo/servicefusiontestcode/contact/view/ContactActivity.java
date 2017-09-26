@@ -13,9 +13,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.inigo.servicefusiontestcode.R;
-import com.inigo.servicefusiontestcode.contact.adapter.PhoneAdapterRecyclerView;
+import com.inigo.servicefusiontestcode.contact.adapter.AddressViewAdapterRecyclerView;
+import com.inigo.servicefusiontestcode.contact.adapter.EmailsViewAdapterRecyclerView;
 import com.inigo.servicefusiontestcode.contact.adapter.PhoneViewAdapterRecyclerView;
+import com.inigo.servicefusiontestcode.contact.model.Addresses;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
+import com.inigo.servicefusiontestcode.contact.model.Emails;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.presenter.ContactPresenter;
 import com.inigo.servicefusiontestcode.contacts.view.MainActivity;
@@ -36,6 +39,12 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
     private RecyclerView phonesRecycler;
     private PhoneViewAdapterRecyclerView phoneViewAdapterRecyclerView;
 
+    private RecyclerView addressesRecycler;
+    private AddressViewAdapterRecyclerView addressViewAdapterRecyclerView;
+
+    private RecyclerView emailsRecycler;
+    private EmailsViewAdapterRecyclerView emailsViewAdapterRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,20 +55,43 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
         lastname    = (TextView)findViewById(R.id.tv_lastname);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if(getIntent().hasExtra(MainActivity.CONTACT_ID)){
             Bundle bundle = new Bundle();
-            bundle.putString(MainActivity.CONTACT_ID, (getIntent().getStringExtra(MainActivity.CONTACT_ID)));
+            if(getIntent().hasExtra(MainActivity.CONTACT_ID) ) {
+                bundle.putString(MainActivity.CONTACT_ID, (getIntent().getStringExtra(MainActivity.CONTACT_ID)));
+            }
+            else{
+                bundle.putString(MainActivity.CONTACT_ID, "1");
+            }
             contactPresenter = new ContactPresenter(this);
             contactPresenter.obtainContact(bundle);
 
             phonesRecycler = (RecyclerView)findViewById(R.id.viewPhonesRecycler);
 
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-            linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+            LinearLayoutManager linearLayoutManagerPhones = new LinearLayoutManager(this);
+            linearLayoutManagerPhones.setOrientation(LinearLayoutManager.VERTICAL);
 
-            phonesRecycler.setLayoutManager(linearLayoutManager);
+            phonesRecycler.setLayoutManager(linearLayoutManagerPhones);
             contactPresenter.obtainPhones(getIntent().getStringExtra(MainActivity.CONTACT_ID));
+
+            addressesRecycler = (RecyclerView)findViewById(R.id.viewAddressesRecycler);
+
+            LinearLayoutManager linearLayoutManagerAddresses = new LinearLayoutManager(this);
+            linearLayoutManagerAddresses.setOrientation(LinearLayoutManager.VERTICAL);
+
+            addressesRecycler.setLayoutManager(linearLayoutManagerAddresses);
+            contactPresenter.obtainAddresses(getIntent().getStringExtra(MainActivity.CONTACT_ID));
+
+            emailsRecycler = (RecyclerView)findViewById(R.id.viewEmailsRecycler);
+
+            LinearLayoutManager linearLayoutManagerEmails = new LinearLayoutManager(this);
+            linearLayoutManagerEmails.setOrientation(LinearLayoutManager.VERTICAL);
+
+            emailsRecycler.setLayoutManager(linearLayoutManagerEmails);
+            contactPresenter.obtainEmails(getIntent().getStringExtra(MainActivity.CONTACT_ID));
         }
     }
 
@@ -80,6 +112,26 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
 
         phonesRecycler.setAdapter(phoneViewAdapterRecyclerView);
         phonesRecycler.invalidate();
+    }
+
+    @Override
+    public void bindAddresses(Addresses addresses) {
+        addressViewAdapterRecyclerView
+                = new AddressViewAdapterRecyclerView(addresses,
+                R.layout.address_item_view, this);
+
+        addressesRecycler.setAdapter(addressViewAdapterRecyclerView);
+        addressesRecycler.invalidate();
+    }
+
+    @Override
+    public void bindEmails(Emails emails) {
+        emailsViewAdapterRecyclerView
+                = new EmailsViewAdapterRecyclerView(emails,
+                R.layout.email_item_view, this);
+
+        emailsRecycler.setAdapter(emailsViewAdapterRecyclerView);
+        emailsRecycler.invalidate();
     }
 
     @Override
@@ -113,6 +165,8 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
                     contactPresenter.deleteContact();
                             Intent intent = new Intent(getBaseContext(), MainActivity.class);
                             intent.putExtra(MainActivity.CONTACT_DELETED, MainActivity.DELETED);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(intent);
                 }
             });

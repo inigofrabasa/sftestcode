@@ -20,7 +20,7 @@
         <EditText
             android:id="@+id/et_searchContact"
             style="@style/AppFontStyle"
-            android:hint="Search"
+            android:hint="@string/search_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

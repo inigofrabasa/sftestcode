@@ -58,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
         clearSearch = (Button) findViewById(R.id.bt_clearSearch);
 
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getResources().getString(R.string.toolbar_title_mainactivity));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

@@ -22,114 +22,199 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margintop_contactitem"
+            android:orientation="vertical"
             >
-
-            <TextView
-                android:id="@+id/tv_nameTitle"
-                style="@style/AppFontStyle"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/nametitle_editcontact"
-                android:textAlignment="textEnd"
-                android:gravity="end"
-                />
-
-            <TextView
-                android:id="@+id/tv_name"
-                style="@style/AppFontStyle"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/marginleft_edittextcontact"
-                android:layout_marginLeft="@dimen/marginleft_contactitem"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margintop_contactitem"
-            >
-
-            <TextView
-                android:id="@+id/tv_lastNameTitle"
-                style="@style/AppFontStyle"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/lastnametitle_editcontact"
-                android:textAlignment="textEnd"
-                android:gravity="end"
-                />
-
-            <TextView
-                android:id="@+id/tv_lastname"
-                style="@style/AppFontStyle"
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/marginleft_edittextcontact"
-                android:layout_marginLeft="@dimen/marginleft_contactitem"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margintop_phonesedit"
-            >
-
-            <TextView
-                android:id="@+id/tv_phonesTitle"
-                style="@style/AppFontStyle"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/phones_editcontact"
-                android:textAlignment="textEnd"
-                android:gravity="end"/>
 
             <LinearLayout
-                android:layout_weight="2"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:layout_marginRight="@dimen/marginleft_edittextcontact"
-                android:layout_marginLeft="@dimen/marginleft_contactitem"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_contactitem"
                 >
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/viewPhonesRecycler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_nameTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/nametitle_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    />
 
-                </android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    android:layout_marginLeft="@dimen/marginleft_contactitem"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_contactitem"
+                >
+
+                <TextView
+                    android:id="@+id/tv_lastNameTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/lastnametitle_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_lastname"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    android:layout_marginLeft="@dimen/marginleft_contactitem"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_phonesedit"
+                >
+
+                <TextView
+                    android:id="@+id/tv_phonesTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/phones_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    android:layout_marginLeft="@dimen/marginleft_contactitem"
+                    >
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/viewPhonesRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_addressesedit"
+                >
+
+                <TextView
+                    android:id="@+id/tv_addressesTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/addresses_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    android:layout_marginLeft="@dimen/marginleft_contactitem"
+                    >
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/viewAddressesRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margintop_emailsedit"
+                >
+
+                <TextView
+                    android:id="@+id/tv_emailsTitle"
+                    style="@style/AppFontStyle"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/emails_editcontact"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/marginleft_edittextcontact"
+                    android:layout_marginLeft="@dimen/marginleft_contactitem"
+                    >
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/viewEmailsRecycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 
 </android.support.design.widget.CoordinatorLayout >

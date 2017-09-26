@@ -12,9 +12,9 @@ public class Contact {
     private String name;
     private String lastName;
     private String dateOfBirth;
-    private List<String> adresses;
+    private Addresses adresses;
     private Phones phones;
-    private List<String> emails;
+    private Emails emails;
 
     public Integer getId() {
         return id;
@@ -57,11 +57,11 @@ public class Contact {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public List<String> getAdresses() {
+    public Addresses getAdresses() {
         return adresses;
     }
 
-    public void setAdresses(List<String> adresses) {
+    public void setAdresses(Addresses adresses) {
         this.adresses = adresses;
     }
 
@@ -73,11 +73,11 @@ public class Contact {
         this.phones = phones;
     }
 
-    public List<String> getEmails() {
+    public Emails getEmails() {
         return emails;
     }
 
-    public void setEmails(List<String> emails) {
+    public void setEmails(Emails emails) {
         this.emails = emails;
     }
 }

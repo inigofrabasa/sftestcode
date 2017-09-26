@@ -3,9 +3,16 @@ package com.inigo.servicefusiontestcode.contact.presenter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.inigo.servicefusiontestcode.contact.interactor.DeleteContactAddressesInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.DeleteContactEmailsInteractor;
 import com.inigo.servicefusiontestcode.contact.interactor.DeleteContactInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.DeleteContactPhonesInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.ObtainAddressesInteractor;
+import com.inigo.servicefusiontestcode.contact.interactor.ObtainEmailsInteractor;
 import com.inigo.servicefusiontestcode.contact.interactor.ObtainPhonesInteractor;
+import com.inigo.servicefusiontestcode.contact.model.Addresses;
 import com.inigo.servicefusiontestcode.contact.model.Contact;
+import com.inigo.servicefusiontestcode.contact.model.Emails;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
 import com.inigo.servicefusiontestcode.contact.view.ContactActivity;
 import com.inigo.servicefusiontestcode.contacts.database.ContactSQLiteHelper;
@@ -27,12 +34,13 @@ public class ContactPresenter {
 
     private ObtainContactInteractor obtainContactInteractor;
     private ObtainPhonesInteractor obtainPhonesInteractor;
+    private ObtainAddressesInteractor obtainAddressesInteractor;
+    private ObtainEmailsInteractor obtainEmailsInteractor;
 
     private Contact contact;
 
     public ContactPresenter(ContactActivity contactActivity){
         this.contactActivity = contactActivity;
-
         initDB();
     }
 
@@ -45,7 +53,6 @@ public class ContactPresenter {
     public void obtainContact(Bundle bundle){
         if(bundle != null){
             obtainContactInteractor = new ObtainContactInteractor(db);
-
             try {
                 contact = obtainContactInteractor.execute(bundle.getString(MainActivity.CONTACT_ID)).get();
                 contactActivity.bindData(contact);
@@ -68,9 +75,37 @@ public class ContactPresenter {
         }
     }
 
+    public void obtainAddresses(String id){
+        obtainAddressesInteractor = new ObtainAddressesInteractor(db);
+        try {
+            contactActivity.bindAddresses(obtainAddressesInteractor.execute(id).get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void obtainEmails(String id){
+        obtainEmailsInteractor = new ObtainEmailsInteractor(db);
+        try {
+            contactActivity.bindEmails(obtainEmailsInteractor.execute(id).get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Boolean deleteContact(){
         try {
-            return new DeleteContactInteractor(db).execute(contact).get();
+            Integer idResult = new DeleteContactInteractor(db).execute(contact).get();
+            if(idResult != -1){
+                new DeleteContactPhonesInteractor(db).execute(idResult).get();
+                new DeleteContactAddressesInteractor(db).execute(idResult).get();
+                new DeleteContactEmailsInteractor(db).execute(idResult).get();
+                return true;
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -83,5 +118,9 @@ public class ContactPresenter {
         void bindData(Contact contact);
 
         void bindPhones(Phones phones);
+
+        void bindAddresses(Addresses addresses);
+
+        void bindEmails(Emails emails);
     }
 }

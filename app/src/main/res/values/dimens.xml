@@ -20,10 +20,16 @@
     <dimen name="progressbar_dimen">50dp</dimen>
     <dimen name="marginleft_edittextcontact">10dp</dimen>
     <dimen name="addbutton_phonecontact">20dp</dimen>
+    <dimen name="addbutton_addresscontact">20dp</dimen>
+    <dimen name="addbutton_emailcontact">20dp</dimen>
     <dimen name="callbutton_phonecontact">28dp</dimen>
+    <dimen name="emailbutton_phonecontact">28dp</dimen>
     <dimen name="margintop_phonesedit">10dp</dimen>
+    <dimen name="margintop_addressesedit">10dp</dimen>
+    <dimen name="margintop_emailsedit">10dp</dimen>
     <dimen name="margintop_contactitem">10dp</dimen>
     <dimen name="marginleft_contactitem">15dp</dimen>
     <dimen name="phoneitemview_height">45dp</dimen>
-    <dimen name="buttoncall_maringright">50dp</dimen>
+    <dimen name="buttoncall_maringright">10dp</dimen>
+    <dimen name="buttonemail_maringright">10dp</dimen>
 </resources>

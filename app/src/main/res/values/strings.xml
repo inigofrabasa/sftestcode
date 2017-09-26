@@ -1,22 +1,19 @@
 <resources>
-    <string name="app_name">servicefusiontestcode</string>
+    <string name="app_name">Contacts App</string>
     <string name="action_edit_contact">Edit</string>
     <string name="action_delete_contact">Delete</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_card">Name</string>
     <string name="phone_card">Phone:</string>
     <string name="last_name_card">Last Name</string>
-    <string name="timecard_card">no date</string>
-    <string name="numbercomments_card">0</string>
-    <string name="textcomments_card">" comments"</string>
-    <string name="description_card">No description</string>
-    <string name="maxlines_description">2</string>
-    <string name="file_name">no file</string>
     <string name="filename_maxlines">1</string>
-    <string name="toolbar_title_mainactivity"> Gists</string>
-    <string name="toolbar_title_filevieweractivity"> Gist File</string>
+    <string name="toolbar_title_mainactivity"> Contacts</string>
     <string name="nametitle_editcontact">Name:</string>
     <string name="lastnametitle_editcontact">Last Name:</string>
     <string name="phones_editcontact">Phones:</string>
+    <string name="addresses_editcontact">Addresses:</string>
+    <string name="emails_editcontact">Emails:</string>
     <string name="phonehint_editcontact">phone...</string>
+    <string name="addresshint_editcontact">address...</string>
+    <string name="emailhint_editcontact">email...</string>
+    <string name="search_hint">Search</string>
 </resources>
