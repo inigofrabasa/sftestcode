@@ -25,12 +25,14 @@ public class UpdateEmailsInteractor extends AsyncTask<Emails, Void, Boolean> {
             db.delete("Emails", "id_contact = " + contactId, null);
 
             for(String email : emails[0].getEmails()){
-                ContentValues newEmail = new ContentValues();
+                if(!email.equals("")){
+                    ContentValues newEmail = new ContentValues();
 
-                newEmail.put("email",email.toString());
-                newEmail.put("id_contact",contactId);
+                    newEmail.put("email",email.toString());
+                    newEmail.put("id_contact",contactId);
 
-                db.insert("Emails",null,newEmail);
+                    db.insert("Emails",null,newEmail);
+                }
             }
 
             return true;

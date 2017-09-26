@@ -32,6 +32,10 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
 
     private TextView name;
     private TextView lastname;
+    private TextView monthDate;
+    private TextView dayDate;
+    private TextView yearDate;
+    private TextView profileName;
 
     private ContactPresenter contactPresenter;
     private String contantId;
@@ -53,6 +57,10 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
         toolbar     = (Toolbar) findViewById(R.id.toolbar);
         name        = (TextView)findViewById(R.id.tv_name);
         lastname    = (TextView)findViewById(R.id.tv_lastname);
+        monthDate   = (TextView)findViewById(R.id.tv_month_date_view);
+        dayDate     = (TextView)findViewById(R.id.tv_day_date_view);
+        yearDate    = (TextView)findViewById(R.id.tv_year_date_view);
+        profileName = (TextView)findViewById(R.id.profileTextName);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
@@ -101,6 +109,16 @@ public class ContactActivity extends AppCompatActivity implements ContactPresent
             contantId = contact.getId().toString();
             name.setText(contact.getName());
             lastname.setText(contact.getLastName());
+
+            if(contact.getDateOfBirth() != null){
+                String[] parts = contact.getDateOfBirth().split("\\.");
+                monthDate.setText(parts[0]);
+                dayDate.setText(parts[1]);
+                yearDate.setText(parts[2]);
+            }
+
+            profileName.setText(Character.toString(contact.getName().charAt(0)) +
+                    Character.toString(contact.getLastName().charAt(0)));
         }
     }
 

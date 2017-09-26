@@ -31,6 +31,9 @@ public class CreateUpdateContactActivity
 
     public static final String CONTACT_ID = "contactId";
     public static final String CONTACT_NAME = "contactName";
+    public static final String CONTACT_MONTH = "contactMonth";
+    public static final String CONTACT_DAY = "contactDay";
+    public static final String CONTACT_YEAR = "contactYear";
     public static final String CONTACT_LASTNAME = "contactLastName";
 
     private Boolean createContact = true;
@@ -39,6 +42,9 @@ public class CreateUpdateContactActivity
 
     private EditText name;
     private EditText lastName;
+    private EditText monthDate;
+    private EditText dayDate;
+    private EditText yearDate;
     private Button saveButton;
     private Button addPhone;
     private Button addAddress;
@@ -64,11 +70,14 @@ public class CreateUpdateContactActivity
 
         toolbar     = (Toolbar) findViewById(R.id.toolbar);
 
-        name =      (EditText)findViewById(R.id.et_contactName);
-        lastName =  (EditText)findViewById(R.id.et_contactLastName);
-        addPhone =  (Button)findViewById(R.id.addPhone);
-        addAddress =  (Button)findViewById(R.id.addAddress);
-        addEmail =  (Button)findViewById(R.id.addEmail);
+        name        =  (EditText)findViewById(R.id.et_contactName);
+        lastName    =  (EditText)findViewById(R.id.et_contactLastName);
+        monthDate   =  (EditText)findViewById(R.id.et_month_date);
+        dayDate     =  (EditText)findViewById(R.id.et_day_date);
+        yearDate    =  (EditText)findViewById(R.id.et_year_date);
+        addPhone    =  (Button)findViewById(R.id.addPhone);
+        addAddress  =  (Button)findViewById(R.id.addAddress);
+        addEmail    =  (Button)findViewById(R.id.addEmail);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Edit Contact");
@@ -120,6 +129,9 @@ public class CreateUpdateContactActivity
 
                 bundle.putString(CONTACT_NAME, name.getText().toString());
                 bundle.putString(CONTACT_LASTNAME, lastName.getText().toString());
+                bundle.putString(CONTACT_MONTH, monthDate.getText().toString());
+                bundle.putString(CONTACT_DAY, dayDate.getText().toString());
+                bundle.putString(CONTACT_YEAR, yearDate.getText().toString());
 
                 if(createContact){
                     if(createUpdateContactPresenter.tryCreateContact(bundle)){
@@ -168,8 +180,17 @@ public class CreateUpdateContactActivity
 
     @Override
     public void bindData(Contact contact) {
-        name.setText(contact.getName());
-        lastName.setText(contact.getLastName());
+        if(contact != null){
+            name.setText(contact.getName());
+            lastName.setText(contact.getLastName());
+
+            if(contact.getDateOfBirth() != null){
+                String[] parts = contact.getDateOfBirth().split("\\.");
+                monthDate.setText(parts[0]);
+                dayDate.setText(parts[1]);
+                yearDate.setText(parts[2]);
+            }
+        }
     }
 
     @Override

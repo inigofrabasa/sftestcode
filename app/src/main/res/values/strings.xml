@@ -18,4 +18,6 @@
     <string name="search_hint">Search</string>
     <string name="text_header_contact">A</string>
     <string name="noContactsList">No Contacts</string>
+    <string name="bt_save_contact">Save</string>
+    <string name="bithdate_editcontact">Date of Birth:</string>
 </resources>

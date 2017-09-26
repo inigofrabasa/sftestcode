@@ -31,6 +31,7 @@ public class ObtainContactInteractor extends AsyncTask<String, Void, Contact> {
                     contact.setId(cursor.getInt(cursor.getColumnIndex("id")));
                     contact.setName(cursor.getString(cursor.getColumnIndex("name")));
                     contact.setLastName(cursor.getString(cursor.getColumnIndex("lastname")));
+                    contact.setDateOfBirth(cursor.getString(cursor.getColumnIndex("datebirth")));
                     cursor.moveToNext();
                 }
             }

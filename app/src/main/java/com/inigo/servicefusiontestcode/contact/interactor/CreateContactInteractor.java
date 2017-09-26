@@ -25,7 +25,7 @@ public class CreateContactInteractor extends AsyncTask<Contact, Void, Integer> {
 
             newContact.put("name",contact[0].getName().toString());
             newContact.put("lastname",contact[0].getLastName().toString());
-
+            newContact.put("datebirth",contact[0].getDateOfBirth().toString());
             return (int) (long)db.insert("Contact",null,newContact);
         } else return -1;
     }

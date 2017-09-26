@@ -24,6 +24,7 @@ public class UpdateContactInteractor extends AsyncTask<Contact, Void, Integer> {
 
             updateContact.put("name",contact[0].getName().toString());
             updateContact.put("lastname",contact[0].getLastName().toString());
+            updateContact.put("datebirth",contact[0].getDateOfBirth().toString());
             db.update("Contact",updateContact,"id="+contact[0].getId(),null);
             return contact[0].getId();
         } else return -1;

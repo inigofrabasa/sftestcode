@@ -24,12 +24,14 @@ public class CreateEmailsInteractor extends AsyncTask<Emails, Void, Boolean> {
     protected Boolean doInBackground(Emails... emails) {
         if(emails != null && db != null){
             for(String email : emails[0].getEmails()){
-                ContentValues newEmail = new ContentValues();
+                    if(!email.equals("")){
+                    ContentValues newEmail = new ContentValues();
 
-                newEmail.put("email", email.toString());
-                newEmail.put("id_contact",contactId);
+                    newEmail.put("email", email.toString());
+                    newEmail.put("id_contact",contactId);
 
-                db.insert("Emails",null,newEmail);
+                    db.insert("Emails",null,newEmail);
+                }
             }
             return true;
         } else return false;

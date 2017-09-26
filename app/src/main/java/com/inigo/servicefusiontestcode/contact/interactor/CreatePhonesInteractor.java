@@ -25,12 +25,14 @@ public class CreatePhonesInteractor extends AsyncTask<Phones, Void, Boolean> {
     protected Boolean doInBackground(Phones... phones) {
         if(phones != null && db != null){
             for(String phone : phones[0].getPhones()){
-                ContentValues newPhone = new ContentValues();
+                if(!phone.equals("")){
+                    ContentValues newPhone = new ContentValues();
 
-                newPhone.put("phone",phone.toString());
-                newPhone.put("id_contact",contactId);
+                    newPhone.put("phone",phone.toString());
+                    newPhone.put("id_contact",contactId);
 
-                db.insert("Phones",null,newPhone);
+                    db.insert("Phones",null,newPhone);
+                }
             }
             return true;
         } else return false;

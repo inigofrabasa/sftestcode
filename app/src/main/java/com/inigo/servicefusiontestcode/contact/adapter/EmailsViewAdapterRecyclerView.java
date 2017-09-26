@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inigo.servicefusiontestcode.R;
 import com.inigo.servicefusiontestcode.contact.model.Emails;
@@ -39,6 +40,7 @@ public class EmailsViewAdapterRecyclerView extends RecyclerView.Adapter<EmailsVi
         holder.emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(activity, "Loading Message...", Toast.LENGTH_SHORT).show();
                 Intent emailIntent = new Intent(Intent.ACTION_SEND);
                 emailIntent.setType("text/plain");
                 activity.startActivity(emailIntent);

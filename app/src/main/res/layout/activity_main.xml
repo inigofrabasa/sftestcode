@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        style="@style/AppTheme.Button"
         app:srcCompat="@drawable/icn_add_contact" />
 
 </android.support.design.widget.CoordinatorLayout>

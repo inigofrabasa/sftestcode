@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inigo.servicefusiontestcode.R;
 import com.inigo.servicefusiontestcode.contact.model.Phones;
@@ -43,6 +44,7 @@ public class PhoneViewAdapterRecyclerView extends RecyclerView.Adapter<PhoneView
         holder.callButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(activity, "Loading Call...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phones.getPhone(position)));
                 if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                     activity.startActivity(intent);

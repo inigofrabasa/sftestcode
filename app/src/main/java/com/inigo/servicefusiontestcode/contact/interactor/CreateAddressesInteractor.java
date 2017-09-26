@@ -24,12 +24,14 @@ public class CreateAddressesInteractor extends AsyncTask<Addresses, Void, Boolea
     protected Boolean doInBackground(Addresses... addresses) {
         if(addresses != null && db != null){
             for(String address : addresses[0].getAddresses()){
-                ContentValues newAddress = new ContentValues();
+                if(!address.equals("")){
+                    ContentValues newAddress = new ContentValues();
 
-                newAddress.put("address",address.toString());
-                newAddress.put("id_contact",contactId);
+                    newAddress.put("address",address.toString());
+                    newAddress.put("id_contact",contactId);
 
-                db.insert("Addresses",null,newAddress);
+                    db.insert("Addresses",null,newAddress);
+                }
             }
             return true;
         } else return false;

@@ -8,8 +8,11 @@
     <dimen name="height_cardview">80dp</dimen>
     <dimen name="height_phone_cardview">70dp</dimen>
     <dimen name="dimen_circleimageprofile">50dp</dimen>
+    <dimen name="dimen_circleimageview">160dp</dimen>
+    <dimen name="limitY_circleimage">-206dp</dimen>
     <dimen name="elevation_circleimageprofile">10dp</dimen>
-    <dimen name="margintop_circleimageprofile">12dp</dimen>
+    <dimen name="margintop_circleimageprofile">30dp</dimen>
+    <dimen name="margintop_textprofile">60dp</dimen>
     <dimen name="marginleft_circleimageprofile">12dp</dimen>
     <dimen name="textsize_username_card">25sp</dimen>
     <dimen name="firstword_textsize_card">15sp</dimen>
@@ -24,10 +27,11 @@
     <dimen name="addbutton_emailcontact">20dp</dimen>
     <dimen name="callbutton_phonecontact">28dp</dimen>
     <dimen name="emailbutton_phonecontact">28dp</dimen>
+    <dimen name="margintop_phonesview">20dp</dimen>
     <dimen name="margintop_phonesedit">10dp</dimen>
     <dimen name="margintop_addressesedit">10dp</dimen>
     <dimen name="margintop_emailsedit">10dp</dimen>
-    <dimen name="margintop_contactitem">10dp</dimen>
+    <dimen name="margintop_contactitem">20dp</dimen>
     <dimen name="marginleft_contactitem">15dp</dimen>
     <dimen name="phoneitemview_height">45dp</dimen>
     <dimen name="buttoncall_maringright">10dp</dimen>
@@ -36,4 +40,8 @@
     <dimen name="header_margin_left">10dp</dimen>
     <dimen name="no_contacts_marginleft">5dp</dimen>
     <dimen name="elevation_initialsname">11dp</dimen>
+    <dimen name="margin_top_save_button">20dp</dimen>
+    <dimen name="width_save_button">300dp</dimen>
+    <dimen name="width_circleimagetoolbar">16dp</dimen>
+    <dimen name="margintoptoolbar_circleimageprofile">-1dp</dimen>
 </resources>

@@ -101,8 +101,11 @@ public class CreateUpdateContactPresenter implements
         if(bundle == null)
             return false;
 
-        if(bundle.getString(CreateUpdateContactActivity.CONTACT_NAME).equals("") ||
-                bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME).equals("")){
+        if( bundle.getString(CreateUpdateContactActivity.CONTACT_NAME).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_MONTH).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_DAY).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_YEAR).equals("")){
             return false;
         }
 
@@ -125,6 +128,10 @@ public class CreateUpdateContactPresenter implements
         contact = new Contact(
                 bundle.getString(CreateUpdateContactActivity.CONTACT_NAME),
                 bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME));
+        contact.setDateOfBirth(
+                bundle.getString(CreateUpdateContactActivity.CONTACT_MONTH) + "." +
+                bundle.getString(CreateUpdateContactActivity.CONTACT_DAY) + "." +
+                bundle.getString(CreateUpdateContactActivity.CONTACT_YEAR));
         contact.setPhones(phones);
         contact.setAdresses(addresses);
         contact.setEmails(emails);
@@ -137,8 +144,11 @@ public class CreateUpdateContactPresenter implements
         if(bundle == null)
             return false;
 
-        if(bundle.getString(CreateUpdateContactActivity.CONTACT_NAME).equals("") ||
-                bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME).equals("")){
+        if( bundle.getString(CreateUpdateContactActivity.CONTACT_NAME).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_MONTH).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_DAY).equals("") ||
+            bundle.getString(CreateUpdateContactActivity.CONTACT_YEAR).equals("")){
             return false;
         }
 
@@ -162,6 +172,10 @@ public class CreateUpdateContactPresenter implements
                 bundle.getString(CreateUpdateContactActivity.CONTACT_NAME),
                 bundle.getString(CreateUpdateContactActivity.CONTACT_LASTNAME));
         contact.setId(Integer.parseInt(bundle.getString(CreateUpdateContactActivity.CONTACT_ID)));
+        contact.setDateOfBirth(
+                bundle.getString(CreateUpdateContactActivity.CONTACT_MONTH) + "." +
+                bundle.getString(CreateUpdateContactActivity.CONTACT_DAY) + "." +
+                bundle.getString(CreateUpdateContactActivity.CONTACT_YEAR));
         contact.setPhones(phones);
         contact.setAdresses(addresses);
         contact.setEmails(emails);
